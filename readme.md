@@ -87,7 +87,14 @@ For `Eigen::Matrix<double>` the following function can be used:
 
 and for `Eigen::Matrix<float>`:
 
-    int cl1_float( ... )
+    int cl1_float(const Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic>& A,
+                  const Eigen::Matrix<float, Eigen::Dynamic, 1>& B,
+                  Eigen::Matrix<float, Eigen::Dynamic, 1>& X,
+                  const Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic>* C,
+                  const Eigen::Matrix<float, Eigen::Dynamic, 1>* D,
+                  const Eigen::Matrix<float, Eigen::Dynamic, Eigen::Dynamic>* E,
+                  const Eigen::Matrix<float, Eigen::Dynamic, 1>* F,
+                  ... )
 
 Note: optional input arguments (C,D,E,F) are handed over as pointers and can be set to NULL.
 
