@@ -74,7 +74,7 @@ C++ environment
 The function can be used in a C++ program with the Eigen math library
 (link: https://eigen.tuxfamily.org/).
 
-For Eigen::Matrix<double> the following function can be used:
+For `Eigen::Matrix<double>` the following function can be used:
 
     int cl1_double(const Matrix<double, Dynamic, Dynamic>& A,
                    const Matrix<double, Dynamic, 1>& B,
@@ -85,7 +85,7 @@ For Eigen::Matrix<double> the following function can be used:
                    const Matrix<double, Dynamic, 1>* F,
                    ... )
 
-and for Eigen::Matrix<float>:
+and for `Eigen::Matrix<float>`:
 
     int cl1_float( ... )
 
