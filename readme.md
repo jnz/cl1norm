@@ -37,6 +37,27 @@ The vector **x** is then calculated by the `cl1norm` function:
 
     x = cl1norm(A, b, C, d, E, f);
 
+Speed
+-----
+
+Solving some linear programming problems can be challenging in terms of
+worst-case execution time (WCET) and numerical stability. This algorithm might
+not be suitable for every application. In my experience though the algorithm is
+very solid and fast for quite a wide range of use cases.
+
+A single data point on the performance on my desktop computer, comparing
+MATLAB's `quadprog` vs. `cl1norm`:
+
+Solving a Model Predictive Control (MPC) problem with MATLAB's
+`quadprog` (Quadratic Programming) takes about 1 ms:
+
+    Elapsed time is 0.001047 seconds.
+
+Solving the same MPC problem with `cl1norm` (Linear Programming) with the same
+prediction horizon:
+
+    Elapsed time is 0.000012 seconds.
+
 Re-build MATLAB Mex file:
 -------------------------
 
