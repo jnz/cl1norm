@@ -3,10 +3,10 @@ CL1NORM: Simplex L1 Solver Function
 
 Based on the extremely well done and valuable work of Barrodale and Roberts:
 
-    > I. Barrodale and F. D. K. Roberts. 1980.
-    > Algorithm 552:
-    > Solution of the Constrained L1 Linear Approximation Problem [F4].
-    > ACM Trans. Math. Softw. 6, 2 (June 1980), 231-235.
+    I. Barrodale and F. D. K. Roberts. 1980.
+    Algorithm 552:
+    Solution of the Constrained L1 Linear Approximation Problem [F4].
+    ACM Trans. Math. Softw. 6, 2 (June 1980), 231-235.
 
 This module, written in C (with a C++ wrapper), is compiled to a MATLAB
 .mex module `cl1norm` to solve linear programming problems in the following
@@ -15,15 +15,15 @@ form:
     A*x = b
 
 **A** is a known design matrix, **b** is a known vector (e.g. from measurements).
-The vector **x** is the resulting L1 solution calculated by the cl1norm function:
+The vector **x** is the resulting L1 solution calculated by the `cl1norm` function:
 
     x = cl1norm(A, b);
 
 ![gif](doc/cl1example.gif?raw=1)
 
-The sum of the absolute value of the residuals is minimized (L1 norm):
+The sum of the absolute values of the residuals is minimized (L1 norm):
 
-    min. sum( |b - A*x| )
+    min. Σ( |b - A*x| )
 
 Optionally linear constraints and linear inequality constraints can be specified:
 
@@ -33,7 +33,7 @@ and
 
     E*x <= f
 
-The vector x is then calculated by the cl1norm function:
+The vector **x** is then calculated by the `cl1norm` function:
 
     x = cl1norm(A, b, C, d, E, f);
 
@@ -87,7 +87,7 @@ For Eigen::Matrix<double> the following function can be used:
 
 and for Eigen::Matrix<float>:
 
-    cl1_float( ... )
+    int cl1_float( ... )
 
 Note: optional input arguments (C,D,E,F) are handed over as pointers and can be set to NULL.
 
@@ -95,10 +95,8 @@ Note: optional input arguments (C,D,E,F) are handed over as pointers and can be 
 C environment
 -------------
 
-The cl1 function can be extracted from cl1norm.cpp and embedded into a pure C project with
-the required data type (double or float) for the "real" typedef used here:
-
-    typedef double real;
+The basic functionality is in the `cl1` function that can be extracted from cl1norm.cpp and
+embedded into a pure C project.
 
     void cl1(const int *k, const int *l, const int *m,
              const int *n, const int *klmd, const int *klm2d,
@@ -108,4 +106,14 @@ the required data type (double or float) for the "real" typedef used here:
     {
         ...
     }
+
+Note that a `real` typedef is used here that can be setup according to project needs, e.g.:
+
+    typedef double real;
+
+The **A**, **b**, **C**, **d**, **E** and **f** matrices are collected in a single **q** matrix:
+
+        A b
+    q = C d
+        E f
 
