@@ -92,7 +92,7 @@
           WORKSPACE.
 */
 
-#ifdef __cpluplus
+#ifdef __cplusplus
 extern "C" {
 #endif
 
@@ -110,7 +110,7 @@ void cl1_c_double(const int *k, const int *l, const int *m,
                   int *kode, const double *toler, int *iter, double *x,
                   double *res, double *error, double *cu, int *iu, int *s);
 
-#ifdef _cpluplus
+#ifdef __cplusplus
 } /* extern "C" */
 #endif
 
